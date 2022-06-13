@@ -1,5 +1,7 @@
 package al.protax.tax.banore;
 
+import al.protax.tax.family_members.FamilyMembers;
+import al.protax.tax.family_status.FamilyStatus;
 import al.protax.tax.statusi.Statusi;
 import lombok.*;
 import org.springframework.lang.Nullable;
@@ -29,8 +31,14 @@ public class Banore {
     @OneToOne
     @JoinColumn(name = "statusi_fkey", referencedColumnName = "kod_statusi")
     private Statusi statusi_fkey;
-    //private FamilyStatus familyStatus;
-    //private FamilyMembers familyMembers;
+    @Nullable
+    @OneToOne
+    @JoinColumn(name = "familje_fkey", referencedColumnName = "familje_Id")
+    private FamilyStatus familje_fkey;
+    @Nullable
+    @OneToOne
+    @JoinColumn(name = "familyMembersFkey", referencedColumnName = "id")
+    private FamilyMembers familyMembers;
 
 
     public Banore(String emri, LocalDate datelindja, String nid, @Nullable Statusi statusi_fkey) {
