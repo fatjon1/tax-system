@@ -4,6 +4,8 @@ import al.protax.tax.exceptions.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -36,5 +38,13 @@ public class BanoreService {
 
     public void deleteBanore(Long banoreId){
         banoreRepository.deleteBanoreById(banoreId);
+    }
+
+    public List<Banore> findBanoreByName(String name){
+        List<Banore> tempList = new ArrayList<>();
+        for (Banore banore: banoreRepository.findAll())
+            if (banore.getEmri().toLowerCase().contains(name.toLowerCase()))
+                tempList.add(banore);
+        return tempList;
     }
 }

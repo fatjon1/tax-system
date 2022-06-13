@@ -45,6 +45,11 @@ public class BanoreController {
          banoreService.deleteBanore(banoreId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @GetMapping("/find/{name}")
+    public ResponseEntity<List<Banore>> findBanoreByName(@PathVariable("name") String name){
+       List<Banore> banoret = banoreService.findBanoreByName(name);
+       return new ResponseEntity<>(banoret, HttpStatus.OK);
+    }
 
 
 }

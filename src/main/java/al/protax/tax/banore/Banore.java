@@ -25,7 +25,7 @@ public class Banore {
     private String emri;
     @Column(name = "datelindja")
     private LocalDate datelindja;
-    @Column(name = "nid")
+    @Column(name = "nid", unique = true)
     private String nid;
     @Nullable
     @OneToOne
